@@ -11,67 +11,85 @@ body {
     text-align: center;
 }
 
+ 
 header {
     background-color: #ff5722;
     padding: 20px;
     color: white;
+    font-size: 1.5rem;
 }
 
+ 
 nav ul {
     list-style: none;
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
     padding: 10px;
 }
 
 nav ul li {
-    margin: 0 15px;
+    margin: 10px;
 }
 
 nav ul li a {
     text-decoration: none;
     color: white;
-    font-size: 18px;
+    font-size: 1rem;
     font-weight: bold;
 }
 
 section {
-    height: 100vh; /* Each section takes full screen height */
-    padding: 50px;
+    padding: 50px 10%;
 }
 
+/* Sections */
 #home {
     background: #f4f4f4;
 }
 
-#vdishes,#nvdishes {
+/* Dish Containers */
+#vdishes, #nvdishes {
     background: #fff5e6;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 15px;
+    gap: 20px;
+    padding: 20px;
 }
 
+ 
 .dish {
     border: 1px solid #ddd;
-    padding: 10px;
+    padding: 15px;
     background-color: white;
-    width: 200px;
+    width: 90%;
+    max-width: 250px;
     text-align: center;
+    border-radius: 10px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.dish:hover {
+    transform: scale(1.05);
 }
 
 .dish img {
     width: 100%;
-    height: 150px;
+    height: auto;
+    max-height: 150px;
     border-radius: 10px;
 }
 
+ 
 #contact {
     background: #e6ffe6;
 }
 
+ 
 form {
-    width: 50%;
+    width: 90%;
+    max-width: 500px;
     margin: auto;
     background: white;
     padding: 20px;
@@ -86,35 +104,66 @@ form input, textarea, button {
 }
 
 textarea {
-    resize: vertical; /* Allows expandable input */
+    resize: vertical;
     min-height: 80px;
 }
 
+ 
 button {
     background-color: #ff5722;
     color: white;
     border: none;
     cursor: pointer;
+    font-size: 1rem;
+    transition: 0.3s;
 }
 
 button:hover {
     opacity: 0.8;
 }
 
+ 
 footer {
     background: #222;
     color: white;
     padding: 10px;
     margin-top: 20px;
 }
-section h6 {
-    text-align: center;
-    width: 100%;
-    display: inline;
-    font-size: 50px;
-    margin-bottom: 5px; /* Reduce bottom margin */
-    padding:0px;
+ 
+@media (max-width: 768px) {
+    nav ul {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    section {
+        padding: 30px 5%;
+    }
+
+    .dish {
+        width: 80%;
+    }
 }
 
- 
+@media (max-width: 480px) {
+    header {
+        font-size: 1.2rem;
+        padding: 15px;
+    }
 
+    nav ul li {
+        margin: 5px;
+    }
+
+    .dish {
+        width: 100%;
+    }
+
+    form {
+        width: 100%;
+    }
+
+    button {
+        font-size: 0.9rem;
+    }
+}
