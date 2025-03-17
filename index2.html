@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Kanthavel Hotel</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <h1>WELCOME TO KANTHAVEL HOTEL</h1>
+        <nav>
+            <ul>
+                <li><a href="#home">HOME</a></li>
+                <li><a href="#vdishes">VEG DISHES</a></li>
+                <li><a href="#nvdishes">NON VEG DISHES</a></li>
+                <li><a href="#contact">CONTACT</a></li>
+            </ul>
+        </nav>
+        <marquee>The body requires no medicine if you eat only after the food you have already eaten is digested.</marquee>
+    </header>
+
+    <!-- Home Section -->
+    <section id="home">
+        <h2>ABOUT OUR HOTEL</h2>
+        <p>Kanthavel Hotel is known for its delicious South Indian dishes. Inspired by top chains like Saravana Bhavan, we aim to provide high-quality food with authentic taste.</p>
+    </section>
+
+    
+    <section id="vdishes">
+          <h6>vegetarian food</h6>  
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni quam, neque deleniti accusamus numquam natus odit ex tempora fuga vitae. Aspernatur delectus velit sequi ut sunt tempora! Maxime, iste velit!</p>
+        <div class="dish"><img src="picture\idlly.jfif"><h3>3 Idlies - 10Rs</h3></div>
+        <div class="dish"><img src="picture\dosa.jfif"><h3>2 Dosas - 10Rs</h3></div>
+        <div class="dish"><img src="picture\vada.jfif"><h3>5 Vadas - 25Rs</h3></div>
+        <div class="dish"><img src="picture\potato.jfif"><h3>Potato Plate - 30Rs</h3></div>
+        <div class="dish"><img src="picture\chapathi.jfif"><h3>3 Chapathi - 40Rs</h3></div>
+        <div class="dish"><img src="picture\rice.jfif"><h3>Rice - 40Rs</h3></div>
+         
+    </section>
+    <section id="nvdishes">
+      
+      <h6>non-vegetarian food</h6>  
+      <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Mollitia nihil fuga iste nam id! Dolorum non, iusto laboriosam ab similique aliquam illo unde, deserunt, aut dolores aliquid inventore labore veritatis.</p>
+      <div class="dish"><img src="picture\chicken grayvey.jpg"><h3>chicken gravey -100</h3></div>
+      <div class="dish"><img src="picture\mutton.jpg"><h3>mutton -100</h3></div>
+      <div class="dish"><img src="picture\laddu.jpg"><h3>mutton -100</h3></div>
+      <div class="dish"><img src="picture\halwa.jpg"><h3>mutton -100</h3></div>
+      <div class="dish"><img src="picture\clobjam.jpg"><h3>mutton -100</h3></div>
+      <div class="dish"><img src="picture\curd.jpg"><h3>mutton -100</h3></div>
+       
+  </section>
+
+
+    
+    <section id="contact">
+        <h2>CONTACT US</h2>
+        <form id="orderForm">
+            <label>Name:</label>
+            <input type="text" id="name" placeholder="Enter your name" required>
+            
+            <label>Phone Number:</label>
+            <input type="tel" id="phone" placeholder="Enter your phone number" required>
+        
+            <label> Date of Delivery:</label>
+            <input type="date" id="date" required>
+        
+            <label>Ordered Items :</label>
+            <textarea id="items" placeholder="Enter your ordered items and feedback here..." rows="4"></textarea>
+        
+            <button type="submit">Submit</button>
+            <button type="reset">Reset</button>
+        </form>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Kanthavel Hotel. All Rights Reserved.</p>
+    </footer>
+    <script>
+
+    document.getElementById("orderForm").addEventListener("submit", async function(event) {
+        event.preventDefault();
+    
+        const order = {
+            name: document.getElementById("name").value,
+            phoneNumber: document.getElementById("phone").value,
+            deliveryDate: document.getElementById("date").value,
+            orderedItems: document.getElementById("items").value
+        };
+    
+        try {
+            const response = await fetch("http://localhost:8080/orders/add", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(order)
+            });
+    
+            if (!response.ok) {
+                throw new Error(`Server error: ${response.status}`);
+            }
+    
+            const data = await response.text();
+            alert("Order submitted successfully!"); 
+        } catch (error) {
+            console.error("Error submitting order:", error);
+            alert("Error submitting order. Check console for details.");
+        }
+    });
+</script>
+       
+
+</body>
+</html>
